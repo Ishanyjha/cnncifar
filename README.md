@@ -4,31 +4,148 @@ Convolutional Neural Network trained on the CIFAR-10 dataset with analysis.
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>ReLU Definition</title>
-    <!-- Load MathJax for LaTeX rendering -->
+    <title>ConvNet Architecture Analysis</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
     </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        .equation {
+            background: #f4f4f4;
+            padding: 8px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
+    <h1>Analysis of Custom ConvNet Architecture</h1>
+    <p>
+        This document presents an analysis of a custom CNN designed for CIFAR-10 classification. 
+        The network consists of four convolutional blocks (each with Batch Normalization, ReLU activation, and MaxPooling) 
+        followed by fully connected layers. Dropout is used for regularization.
+    </p>
 
-<h2>ReLU Function Definition</h2>
+    <h2>Architecture Overview</h2>
+    <table>
+        <tr>
+            <th>Layer</th>
+            <th>Type</th>
+            <th>Output Shape</th>
+            <th>Parameters</th>
+        </tr>
+        <tr>
+            <td>Conv1 + BN + ReLU + Pool</td>
+            <td>Conv2D(3, 32, k=3, p=1)</td>
+            <td>32 × 16 × 16</td>
+            <td>896</td>
+        </tr>
+        <tr>
+            <td>Conv2 + BN + ReLU + Pool</td>
+            <td>Conv2D(32, 64, k=3, p=1)</td>
+            <td>64 × 8 × 8</td>
+            <td>18,624</td>
+        </tr>
+        <tr>
+            <td>Conv3 + BN + ReLU + Pool</td>
+            <td>Conv2D(64, 128, k=3, p=1)</td>
+            <td>128 × 4 × 4</td>
+            <td>74,112</td>
+        </tr>
+        <tr>
+            <td>Conv4 + BN + ReLU + Pool</td>
+            <td>Conv2D(128, 256, k=3, p=1)</td>
+            <td>256 × 2 × 2</td>
+            <td>295,680</td>
+        </tr>
+        <tr>
+            <td>FC1 + BN + Dropout</td>
+            <td>Linear(1024 → 256)</td>
+            <td>256</td>
+            <td>262,912</td>
+        </tr>
+        <tr>
+            <td>FC2 + BN + Dropout</td>
+            <td>Linear(256 → 128)</td>
+            <td>128</td>
+            <td>33,024</td>
+        </tr>
+        <tr>
+            <td>FC3</td>
+            <td>Linear(128 → 10)</td>
+            <td>10</td>
+            <td>1,290</td>
+        </tr>
+    </table>
 
-<p>
-The Rectified Linear Unit (ReLU) function is defined as:
-</p>
+    <p><strong>Total parameters:</strong> 686,730 (all trainable)</p>
 
-<p>
-$$
-\text{ReLU}(x) = \max(0, x) =
-\begin{cases}
-x, & \text{if } x > 0, \\
-0, & \text{otherwise}.
-\end{cases}
-$$
-</p>
+    <h2>Mathematical Notes</h2>
+    <p>
+        The output size after a convolution layer is computed as:
+    </p>
+    <div class="equation">
+        \[
+        H_{out} = \left\lfloor \frac{H_{in} + 2P - K}{S} \right\rfloor + 1
+        \]
+    </div>
+    <p>
+        where \( H_{in} \) is the input height, \( K \) the kernel size, \( P \) the padding, and \( S \) the stride.
+    </p>
 
+    <p>
+        The number of parameters for a Conv2D layer is:
+    </p>
+    <div class="equation">
+        \[
+        \text{Params} = (K_h \cdot K_w \cdot C_{in} \cdot C_{out}) + C_{out}
+        \]
+    </div>
+    <p>
+        where \( K_h, K_w \) are kernel height and width, \( C_{in} \) is input channels, and \( C_{out} \) is output channels.
+    </p>
+
+    <p>
+        For a Linear (fully connected) layer:
+    </p>
+    <div class="equation">
+        \[
+        \text{Params} = (N_{in} \cdot N_{out}) + N_{out}
+        \]
+    </div>
+
+    <h2>Design Choices</h2>
+    <ul>
+        <li><strong>Batch Normalization:</strong> Speeds up training and provides some regularization.</li>
+        <li><strong>Dropout (0.25):</strong> Reduces overfitting by randomly zeroing activations.</li>
+        <li><strong>MaxPooling(2×2):</strong> Downsamples feature maps, reducing computational cost.</li>
+        <li><strong>Four convolutional stages:</strong> Increasing channels from 32 to 256 to capture complex features.</li>
+    </ul>
+
+    <p>
+        This architecture is a balance between depth and parameter count, making it suitable for CIFAR-10 while avoiding the 
+        heavy computation of very deep networks like ResNet-50.
+    </p>
 </body>
 
 <body>
