@@ -16,7 +16,9 @@ Convolutional Neural Network trained on the CIFAR-10 dataset with analysis.
 <p>
     CNNs consist of an input layer, hidden layers, and an output layer. Usually, the hidden layers are the ones that perform convolution. In these layers, the dot product (or Frobenius inner product) is computed between a convolution kernel and a segment of the image matrix. The convolution kernel is a small matrix that is chosen to extract features from the image, such as edges, ridges, or a certain segment like a line. The convolutional layers are followed by pooling layers, which basically perform downsampling so as to reduce computational cost and increase the receptive fields of neurons later in the network (receptive field of a neuron: all input neurons that can affect this output neurons value).
 </p>
-
+<p>
+        The CNN input is a tensor of dimension (# imputs) x (input height) x (input width) x (channels). The layer abstracts this input to another tensor whose dimensions are now relating to the feautre map. Unlike fully-connected feedforward NNs, convolutional neural networks dont have as many neurons needed for the computation. This is ideal because if we used an FCFF neural net, we would need a massive number of neurons to process a large image. Each neuron gets its input from a number of neurons in the previous layer. In a convolution layer, each neuron gets its input from a restricted area of the previous neuron layer, the receptive field. In the traditional 2D CNN, 5x5 neurons is the size of this layer, whereas in a fully-connected network, the receptive field of a neuron <i>n</i> is all neurons in the <i>(n-1)th</i> layer. 
+</p>
 <h2>Architecture Overview</h2>
 <table>
     <tr>
