@@ -4,39 +4,10 @@ Convolutional Neural Network trained on the CIFAR-10 dataset with analysis.
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>ConvNet Architecture Analysis</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
     </script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            line-height: 1.6;
-        }
-        h1, h2 {
-            color: #2c3e50;
-        }
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-        .equation {
-            background: #f4f4f4;
-            padding: 8px;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-    </style>
 </head>
 <body>
     <h1>Analysis of Custom ConvNet Architecture</h1>
