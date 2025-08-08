@@ -71,35 +71,6 @@ Convolutional Neural Network trained on the CIFAR-10 dataset with analysis.
 
 <p><strong>Total parameters:</strong> 686,730 (all trainable)</p>
 
-<h2>Mathematical Notes</h2>
-<p>
-    The output size after a convolution layer is computed as:
-</p>
-<div class="equation">
-    $$H_{out} = \left\lfloor \frac{H_{in} + 2P - K}{S} \right\rfloor + 1$$
-</div>
-<p>
-    where \(H_{in}\) is the input height, \(K\) the kernel size, \(P\) the padding, and \(S\) the stride.
-</p>
-
-<p>
-    The number of parameters for a Conv2D layer is:
-</p>
-<div class="equation">
-    $$\text{Params} = (K_h \cdot K_w \cdot C_{in} \cdot C_{out}) + C_{out}$$
-</div>
-<p>
-    where \(K_h, K_w\) are kernel height and width, \(C_{in}\) is input channels, and \(C_{out}\) is output channels.
-</p>
-
-<p>
-    For a Linear (fully connected) layer:
-</p>
-<div class="equation">
-    $$\text{Params} = (N_{in} \cdot N_{out}) + N_{out}$$
-</div>
-
-
 <h2>Design Choices</h2>
 <ul>
     <li><strong>Batch Normalization:</strong> Speeds up training and provides some regularization.</li>
