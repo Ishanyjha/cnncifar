@@ -1,4 +1,4 @@
-# cnncifar
+# CNN CiFAR-10
 Convolutional Neural Network trained on the CIFAR-10 dataset with analysis.
 
 <html>
@@ -11,9 +11,9 @@ Convolutional Neural Network trained on the CIFAR-10 dataset with analysis.
 
 <h1>Analysis of Custom ConvNet Architecture</h1>
 <p>
-    This document presents an analysis of a custom CNN designed for CIFAR-10 classification. 
-    The network consists of four convolutional blocks (each with Batch Normalization, ReLU activation, and MaxPooling) 
-    followed by fully connected layers. Dropout is used for regularization.
+    I made a convolutional neural network using PyTorch and explored different hyperparameters and architechtural settings to increase the accuracy. Here, I will show what my process and reasoning was for making certain changes to the neural network and how those affected the accuracy.
+
+    CNNs consist of an input layer, hidden layers, and an output layer. Usually, the hidden layers are the ones that perform convolution. In these layers, the dot product (or Frobenius inner product) is computed between a convolution kernel and a segment of the image matrix. The convolution kernel is a small matrix that is chosen to extract features from the image, such as edges, ridges, or a certain segment like a line. The convolutional layers are followed by pooling layers, which basically perform downsampling so as to reduce computational cost and increase the receptive fields of neurons later in the network (receptive field of a neuron: all input neurons that can affect this output neurons value).
 </p>
 
 <h2>Architecture Overview</h2>
