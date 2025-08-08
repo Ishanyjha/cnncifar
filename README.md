@@ -2,6 +2,34 @@
 Convolutional Neural Network trained on the CIFAR-10 dataset with analysis.
 
 <html>
+<head>
+    <meta charset="UTF-8">
+    <title>ReLU Definition</title>
+    <!-- Load MathJax for LaTeX rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+
+<h2>ReLU Function Definition</h2>
+
+<p>
+The Rectified Linear Unit (ReLU) function is defined as:
+</p>
+
+<p>
+$$
+\text{ReLU}(x) = \max(0, x) =
+\begin{cases}
+x, & \text{if } x > 0, \\
+0, & \text{otherwise}.
+\end{cases}
+$$
+</p>
+
+</body>
 
 <body>
 
