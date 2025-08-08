@@ -9,115 +9,115 @@ Convolutional Neural Network trained on the CIFAR-10 dataset with analysis.
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
     </script>
 </head>
-<body>
-    <h1>Analysis of Custom ConvNet Architecture</h1>
-    <p>
-        This document presents an analysis of a custom CNN designed for CIFAR-10 classification. 
-        The network consists of four convolutional blocks (each with Batch Normalization, ReLU activation, and MaxPooling) 
-        followed by fully connected layers. Dropout is used for regularization.
-    </p>
 
-    <h2>Architecture Overview</h2>
-    <table>
-        <tr>
-            <th>Layer</th>
-            <th>Type</th>
-            <th>Output Shape</th>
-            <th>Parameters</th>
-        </tr>
-        <tr>
-            <td>Conv1 + BN + ReLU + Pool</td>
-            <td>Conv2D(3, 32, k=3, p=1)</td>
-            <td>32 × 16 × 16</td>
-            <td>896</td>
-        </tr>
-        <tr>
-            <td>Conv2 + BN + ReLU + Pool</td>
-            <td>Conv2D(32, 64, k=3, p=1)</td>
-            <td>64 × 8 × 8</td>
-            <td>18,624</td>
-        </tr>
-        <tr>
-            <td>Conv3 + BN + ReLU + Pool</td>
-            <td>Conv2D(64, 128, k=3, p=1)</td>
-            <td>128 × 4 × 4</td>
-            <td>74,112</td>
-        </tr>
-        <tr>
-            <td>Conv4 + BN + ReLU + Pool</td>
-            <td>Conv2D(128, 256, k=3, p=1)</td>
-            <td>256 × 2 × 2</td>
-            <td>295,680</td>
-        </tr>
-        <tr>
-            <td>FC1 + BN + Dropout</td>
-            <td>Linear(1024 → 256)</td>
-            <td>256</td>
-            <td>262,912</td>
-        </tr>
-        <tr>
-            <td>FC2 + BN + Dropout</td>
-            <td>Linear(256 → 128)</td>
-            <td>128</td>
-            <td>33,024</td>
-        </tr>
-        <tr>
-            <td>FC3</td>
-            <td>Linear(128 → 10)</td>
-            <td>10</td>
-            <td>1,290</td>
-        </tr>
-    </table>
+<h1>Analysis of Custom ConvNet Architecture</h1>
+<p>
+    This document presents an analysis of a custom CNN designed for CIFAR-10 classification. 
+    The network consists of four convolutional blocks (each with Batch Normalization, ReLU activation, and MaxPooling) 
+    followed by fully connected layers. Dropout is used for regularization.
+</p>
 
-    <p><strong>Total parameters:</strong> 686,730 (all trainable)</p>
+<h2>Architecture Overview</h2>
+<table>
+    <tr>
+        <th>Layer</th>
+        <th>Type</th>
+        <th>Output Shape</th>
+        <th>Parameters</th>
+    </tr>
+    <tr>
+        <td>Conv1 + BN + ReLU + Pool</td>
+        <td>Conv2D(3, 32, k=3, p=1)</td>
+        <td>32 × 16 × 16</td>
+        <td>896</td>
+    </tr>
+    <tr>
+        <td>Conv2 + BN + ReLU + Pool</td>
+        <td>Conv2D(32, 64, k=3, p=1)</td>
+        <td>64 × 8 × 8</td>
+        <td>18,624</td>
+    </tr>
+    <tr>
+        <td>Conv3 + BN + ReLU + Pool</td>
+        <td>Conv2D(64, 128, k=3, p=1)</td>
+        <td>128 × 4 × 4</td>
+        <td>74,112</td>
+    </tr>
+    <tr>
+        <td>Conv4 + BN + ReLU + Pool</td>
+        <td>Conv2D(128, 256, k=3, p=1)</td>
+        <td>256 × 2 × 2</td>
+        <td>295,680</td>
+    </tr>
+    <tr>
+        <td>FC1 + BN + Dropout</td>
+        <td>Linear(1024 → 256)</td>
+        <td>256</td>
+        <td>262,912</td>
+    </tr>
+    <tr>
+        <td>FC2 + BN + Dropout</td>
+        <td>Linear(256 → 128)</td>
+        <td>128</td>
+        <td>33,024</td>
+    </tr>
+    <tr>
+        <td>FC3</td>
+        <td>Linear(128 → 10)</td>
+        <td>10</td>
+        <td>1,290</td>
+    </tr>
+</table>
 
-    <h2>Mathematical Notes</h2>
-    <p>
-        The output size after a convolution layer is computed as:
-    </p>
-    <div class="equation">
-        \[
-        H_{out} = \left\lfloor \frac{H_{in} + 2P - K}{S} \right\rfloor + 1
-        \]
-    </div>
-    <p>
-        where \( H_{in} \) is the input height, \( K \) the kernel size, \( P \) the padding, and \( S \) the stride.
-    </p>
+<p><strong>Total parameters:</strong> 686,730 (all trainable)</p>
 
-    <p>
-        The number of parameters for a Conv2D layer is:
-    </p>
-    <div class="equation">
-        \[
-        \text{Params} = (K_h \cdot K_w \cdot C_{in} \cdot C_{out}) + C_{out}
-        \]
-    </div>
-    <p>
-        where \( K_h, K_w \) are kernel height and width, \( C_{in} \) is input channels, and \( C_{out} \) is output channels.
-    </p>
+<h2>Mathematical Notes</h2>
+<p>
+    The output size after a convolution layer is computed as:
+</p>
+<div class="equation">
+    \[
+    H_{out} = \left\lfloor \frac{H_{in} + 2P - K}{S} \right\rfloor + 1
+    \]
+</div>
+<p>
+    where \( H_{in} \) is the input height, \( K \) the kernel size, \( P \) the padding, and \( S \) the stride.
+</p>
 
-    <p>
-        For a Linear (fully connected) layer:
-    </p>
-    <div class="equation">
-        \[
-        \text{Params} = (N_{in} \cdot N_{out}) + N_{out}
-        \]
-    </div>
+<p>
+    The number of parameters for a Conv2D layer is:
+</p>
+<div class="equation">
+    \[
+    \text{Params} = (K_h \cdot K_w \cdot C_{in} \cdot C_{out}) + C_{out}
+    \]
+</div>
+<p>
+    where \( K_h, K_w \) are kernel height and width, \( C_{in} \) is input channels, and \( C_{out} \) is output channels.
+</p>
 
-    <h2>Design Choices</h2>
-    <ul>
-        <li><strong>Batch Normalization:</strong> Speeds up training and provides some regularization.</li>
-        <li><strong>Dropout (0.25):</strong> Reduces overfitting by randomly zeroing activations.</li>
-        <li><strong>MaxPooling(2×2):</strong> Downsamples feature maps, reducing computational cost.</li>
-        <li><strong>Four convolutional stages:</strong> Increasing channels from 32 to 256 to capture complex features.</li>
-    </ul>
+<p>
+    For a Linear (fully connected) layer:
+</p>
+<div class="equation">
+    \[
+    \text{Params} = (N_{in} \cdot N_{out}) + N_{out}
+    \]
+</div>
 
-    <p>
-        This architecture is a balance between depth and parameter count, making it suitable for CIFAR-10 while avoiding the 
-        heavy computation of very deep networks like ResNet-50.
-    </p>
-</body>
+<h2>Design Choices</h2>
+<ul>
+    <li><strong>Batch Normalization:</strong> Speeds up training and provides some regularization.</li>
+    <li><strong>Dropout (0.25):</strong> Reduces overfitting by randomly zeroing activations.</li>
+    <li><strong>MaxPooling(2×2):</strong> Downsamples feature maps, reducing computational cost.</li>
+    <li><strong>Four convolutional stages:</strong> Increasing channels from 32 to 256 to capture complex features.</li>
+</ul>
+
+<p>
+    This architecture is a balance between depth and parameter count, making it suitable for CIFAR-10 while avoiding the 
+    heavy computation of very deep networks like ResNet-50.
+</p>
+
 
 <body>
 
