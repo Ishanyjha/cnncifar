@@ -2,32 +2,7 @@
 Convolutional Neural Network trained on the CIFAR-10 dataset with analysis.
 
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Neural Network Results Table</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            font-family: Arial, sans-serif;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-    </style>
-</head>
+
 <body>
 
 <h2>Neural Network Training Results</h2>
