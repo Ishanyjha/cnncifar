@@ -9,7 +9,7 @@ Convolutional Neural Network trained on the CIFAR-10 dataset with analysis.
 </script>
 
 
-<h1>Analysis of Custom ConvNet Architecture</h1>
+<h1>Analysis of CNN Architecture</h1>
 <p>
     I made a convolutional neural network using PyTorch and explored different hyperparameters and architechtural settings to increase the accuracy. Here, I will show what my process and reasoning was for making certain changes to the neural network and how those affected the accuracy.
 </p>
